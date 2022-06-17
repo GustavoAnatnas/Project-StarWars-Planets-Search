@@ -4,6 +4,7 @@ import AppContext from './Context';
 
 function AppProvider({ children }) {
   const [info, setInfo] = useState([]);
+  const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -11,6 +12,7 @@ function AppProvider({ children }) {
       const response = await fetch(url);
       const data = await response.json();
       setInfo(data.results);
+      setFilter(data.results);
     };
     fetchAPI();
   }, []);
@@ -18,6 +20,8 @@ function AppProvider({ children }) {
   const context = {
     info,
     setInfo,
+    filter,
+    setFilter,
   };
 
   return (
