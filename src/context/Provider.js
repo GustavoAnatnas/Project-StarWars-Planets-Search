@@ -5,6 +5,11 @@ import AppContext from './Context';
 function AppProvider({ children }) {
   const [info, setInfo] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [namePlanet, setNamePlanet] = useState([]);
+  const [columnFilter, setColumnFilter] = useState('population');
+  const [operatorFilter, setOperatorFilter] = useState('maior que');
+  const [valueFilter, setValueFilter] = useState(0);
+  const [saveValueFiltered, setSaveValueFiltered] = useState([]);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -17,11 +22,41 @@ function AppProvider({ children }) {
     fetchAPI();
   }, []);
 
+  useEffect(() => {
+    const nameFilter = info.filter((planet) => planet.name.toLowerCase()
+      .includes(namePlanet));
+
+    const multipleFilter = saveValueFiltered.reduce((acc, filt) => acc.filter((e) => {
+      switch (filt.operatorFilter) {
+      case 'maior que':
+        return e[filt.columnFilter] > Number(filt.valueFilter);
+      case 'menor que':
+        return e[filt.columnFilter] < Number(filt.valueFilter);
+      case 'igual a':
+        return Number(e[filt.columnFilter]) === Number(filt.valueFilter);
+      default:
+        return true;
+      }
+    }), nameFilter);
+
+    setFilter(multipleFilter);
+  }, [namePlanet, saveValueFiltered]);
+
   const context = {
     info,
     setInfo,
     filter,
     setFilter,
+    namePlanet,
+    setNamePlanet,
+    columnFilter,
+    setColumnFilter,
+    operatorFilter,
+    setOperatorFilter,
+    valueFilter,
+    setValueFilter,
+    saveValueFiltered,
+    setSaveValueFiltered,
   };
 
   return (

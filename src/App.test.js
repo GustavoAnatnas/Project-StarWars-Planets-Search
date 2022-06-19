@@ -39,7 +39,7 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe.only('1 - Faça uma requisição para o endpoint `/planets` da API de Star Wars e preencha uma tabela com os dados retornados, com exceção dos da coluna `residents`', () => {
+describe('1 - Faça uma requisição para o endpoint `/planets` da API de Star Wars e preencha uma tabela com os dados retornados, com exceção dos da coluna `residents`', () => {
 
   it('Realize uma requisição para a API', async () => {
     await act(async () => {
@@ -377,7 +377,7 @@ describe('5 - Não utilize filtros repetidos', () => {
   });
 });
 
-describe('6 - Apague um filtro de valor numérico ao clicar no ícone de X de um dos filtros e apague todas filtragens numéricas simultaneamente ao clicar em outro botão de Remover todas filtragens', () => {
+describe.only('6 - Apague um filtro de valor numérico ao clicar no ícone de X de um dos filtros e apague todas filtragens numéricas simultaneamente ao clicar em outro botão de Remover todas filtragens', () => {
 
   const removeFilter = async (index = 0) => {
     const filters = await screen.findAllByTestId(REMOVE_FILTER_SELECTOR);
