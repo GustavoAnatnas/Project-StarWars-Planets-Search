@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/Context';
+import '../App.css';
 
 function Planets() {
   const {
@@ -39,17 +40,20 @@ function Planets() {
 
   return (
     <div>
-      <form>
+      <form className="form">
         <input
           data-testid="name-filter"
           type="text"
           onChange={ handleFilterChange }
+          placeholder="Digite o nome do planeta"
+          className="name-filter"
         />
-        <label htmlFor="column">
-          Column
+        <label className="column-name" htmlFor="column">
+          Coluna
           <select
             value={ columnFilter }
             data-testid="column-filter"
+            className="column"
             onChange={ ({ target }) => setColumnFilter(target.value) }
           >
             <option value="population">population</option>
@@ -59,10 +63,11 @@ function Planets() {
             <option value="surface_water">surface_water</option>
           </select>
         </label>
-        <label htmlFor="operator">
-          Operator
+        <label className="operator-name" htmlFor="operator">
+          Operador
           <select
             value={ operatorFilter }
+            className="operator"
             onChange={ ({ target }) => setOperatorFilter(target.value) }
             data-testid="comparison-filter"
           >
@@ -74,18 +79,21 @@ function Planets() {
         <input
           type="number"
           value={ valueFilter }
+          className="number-filter"
           onChange={ ({ target }) => setValueFilter(target.value) }
           data-testid="value-filter"
         />
         <button
+          className="button-filter"
           type="button"
           onClick={ filterButton }
           data-testid="button-filter"
         >
-          Filter
+          Filtrar
         </button>
         <button
           type="button"
+          className="delete-filter"
           onClick={ deleteAllFilters }
           data-testid="button-remove-filters"
         >
@@ -98,15 +106,16 @@ function Planets() {
             key={ `${fil.columnFilter}-${index}` }
             data-testid="filter"
           >
-            { `${fil.columnFilter} 
-            ${fil.operatorFilter} 
-            ${fil.valueFilter}` }
             <button
               type="button"
+              className="delete-filter-bttn"
               onClick={ () => deletFilter(index) }
             >
               x
             </button>
+            { `${fil.columnFilter} 
+            ${fil.operatorFilter} 
+            ${fil.valueFilter}` }
           </p>
         ))
       }
@@ -150,6 +159,7 @@ function Planets() {
           }
         </tbody>
       </table>
+
     </div>
   );
 }

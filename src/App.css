@@ -1,41 +1,99 @@
-.App {
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial , Helvetica , sans-serif;
+  margin: auto;
+}
+
+.form {
+  align-items: flex-end;
+  background-color: #fed34f;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  justify-content: space-evenly;
+  margin: 0;
+  width: 100%;
+
+}
+
+.name-filter {
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 20px;
+  width: 170px;
+}
+
+.column, .operator, .number-filter {
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  width: 170px;
+}
+
+
+.column-name, .operator-name {
+  align-items: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  font-weight: 900;
+}
+
+.button-filter {
+  background-color: rgb(85, 125, 190);
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: larger;
+  font-weight: 700;
+  height: 25px;
+  width: 80px;
+}
+
+.delete-filter {
+  background-color: rgb(206, 69, 69);
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: larger;
+  font-weight: 700;
+  height: 25px;
+  width: 80px;
+}
+
+.delete-filter-bttn {
+  background-color: rgb(206, 69, 69);
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  cursor: grab;
+  font-size: larger;
+  font-weight: 700;
+  height: 30px;
+  width: 35px;
+}
+
+table, th, td {
+  border: 1px solid #fed34f;
+  border-collapse: collapse;
+  color: #fed34f;
+  font-size: 15px;
+  margin-top: 60px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+th {
+  background-color: black;
+  color: #fed34f;
+  font-size: large;
+  font-weight: 900;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
